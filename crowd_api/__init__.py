@@ -71,7 +71,7 @@ class CrowdAPI:
             raise ValueError("Must pass username")
 
         req = self.api_get("/user/group/direct?username={}&max-results={}".format(
-            kwargs['username'], kwargs.get('max_results', 1000)))
+            kwargs['username'], kwargs.get('max_results', 3000)))
         if req.status_code == 200:
             for group in req.json()['groups']:
                 groups.append(group['name'])
@@ -89,7 +89,7 @@ class CrowdAPI:
             raise ValueError("Must pass username")
 
         req = self.api_get("/group/user/direct?groupname={}&max-results={}".format(
-            kwargs['groupname'], kwargs.get('max_results', 1000)))
+            kwargs['groupname'], kwargs.get('max_results', 3000)))
         if req.status_code == 200:
             for user in req.json()['users']:
                 users.append(user['name'])
@@ -158,7 +158,7 @@ class CrowdAPI:
         groups = []
 
         req = self.api_get(
-            "/search?entity-type=group&max-results={}".format(kwargs.get('max_results', 1000)))
+            "/search?entity-type=group&max-results={}".format(kwargs.get('max_results', 3000)))
 
         if req.status_code == 200:
             for group in req.json()['groups']:
@@ -177,7 +177,7 @@ class CrowdAPI:
             raise ValueError("You need to define a certian restriction")
 
         req = self.api_get(
-            "/search?entity-type=group&restriction={}&max-results={}".format(kwargs['restriction'], kwargs.get('max_results', 1000)))
+            "/search?entity-type=group&restriction={}&max-results={}".format(kwargs['restriction'], kwargs.get('max_results', 3000)))
 
         if req.status_code == 200:
             for group in req.json()['groups']:
@@ -193,7 +193,7 @@ class CrowdAPI:
         users = []
 
         req = self.api_get(
-            "/search?entity-type=user&max-results={}".format(kwargs.get('max_results', 1000)))
+            "/search?entity-type=user&max-results={}".format(kwargs.get('max_results', 3000)))
         if req.status_code == 200:
             for user in req.json()['users']:
                 users.append(user['name'])
@@ -211,7 +211,7 @@ class CrowdAPI:
             raise ValueError("You need to define a certian restriction")
 
         req = self.api_get(
-            "/search?entity-type=user&restriction={}&max-results={}".format(kwargs['restriction'], kwargs.get('max_results', 1000)))
+            "/search?entity-type=user&restriction={}&max-results={}".format(kwargs['restriction'], kwargs.get('max_results', 3000)))
         if req.status_code == 200:
             for user in req.json()['users']:
                 users.append(user['name'])
