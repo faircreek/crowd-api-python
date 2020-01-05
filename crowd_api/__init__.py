@@ -10,6 +10,10 @@ import random
 import string
 import logging
 
+from requests.packages.urllib3.exceptions import InsecureRequestWarning
+
+requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
+
 
 class CrowdAPI:
     def __init__(self, **kwargs):
